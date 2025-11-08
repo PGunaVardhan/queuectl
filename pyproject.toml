@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "queuectl"
+version = "0.1.0"
+description = "A lightweight CLI job queue with persistence and retry logic"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Guna Vardhan Pulagam", email = "pulagamguna4142@gmail.com"}
+]
+keywords = ["queue", "job", "worker", "cli", "background-processing"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "typer[all]>=0.9.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+queuectl = "queuectl.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/PGunaVardhan/queuectl"
+Repository = "https://github.com/PGunaVardhan/queuectl"
+Issues = "https://github.com/PGunaVardhan/queuectl/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["queuectl*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]  # Line too long (handled by black)

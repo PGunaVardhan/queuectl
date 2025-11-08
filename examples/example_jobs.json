@@ -1,0 +1,29 @@
+[
+  {
+    "id": "backup-database",
+    "command": "pg_dump mydb > backup.sql",
+    "max_retries": 5
+  },
+  {
+    "id": "send-email",
+    "command": "python scripts/send_newsletter.py",
+    "max_retries": 3,
+    "timeout": 300
+  },
+  {
+    "id": "process-images",
+    "command": "python scripts/resize_images.py --batch 100",
+    "max_retries": 2
+  },
+  {
+    "id": "cleanup-old-logs",
+    "command": "find /var/log -mtime +30 -delete",
+    "max_retries": 1
+  },
+  {
+    "id": "scheduled-report",
+    "command": "python scripts/generate_report.py",
+    "run_at": "2025-11-10T09:00:00Z",
+    "max_retries": 3
+  }
+]
