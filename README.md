@@ -320,6 +320,7 @@ Libraries used:
 - `pytest` for testing (MIT license)
 
 All code in this repository is original work written specifically for this project.
+The demo video for the project can be found at [This google drive link](https://drive.google.com/file/d/1emVxdNsOBq8ixQAzkGddN1Bt6tZyXMAc/view?usp=sharing).
 
 ---
 
